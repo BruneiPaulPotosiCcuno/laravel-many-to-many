@@ -49,6 +49,26 @@
                         </select>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label" for="type_id">Tipo di Tecnologia</label>
+                        <div class="row">
+                            @foreach ($technologies as $technology)
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="technologies[]" value="{{ $technology->id }}" id="tech{{ $technology->id }}" @checked(in_array($technology->id, old('technologies', [])))>
+                                                <label class="form-check-label" for="tech{{ $technology->id }}">
+                                                    {{ $technology->name }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
 
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg">Crea Progetto</button>
