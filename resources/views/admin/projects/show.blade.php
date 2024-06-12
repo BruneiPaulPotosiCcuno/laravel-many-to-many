@@ -19,6 +19,19 @@
                         <h5 class="text-primary">Type</h5>
                         <p class="border p-3 rounded bg-light">{{ $project->type ? $project->type->name : 'No type'}}</p>
                     </div>
+
+                    <div class="col-md-6">
+                        <h5 class="text-primary">Technologies</h5>
+                        @if (count($project->technologies) > 0)
+                            @foreach ($project->technologies as $technology)
+                                {{$technology->name}}
+                            @endforeach
+                            @else
+                            No technology...
+                        @endif
+                    </div>
+
+
                     <div class="col-md-6">
                         <h5 class="text-primary">Nome del progetto</h5>
                         <p class="border p-3 rounded bg-light">{{ $project->name }}</p>
