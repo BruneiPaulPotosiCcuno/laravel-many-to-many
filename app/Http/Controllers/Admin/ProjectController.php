@@ -71,6 +71,11 @@ class ProjectController extends Controller
         $newProject->fill($formData);
         $newProject->slug = Str::slug($newProject->name, '-');
         $newProject->save();
+
+        if( $request->has('tags')) {
+            $newProject->technologies()->attach($formData['tags']);
+        }
+
         return redirect()->route('admin.projects.show', ['project' => $newProject->id]);
     }
 
